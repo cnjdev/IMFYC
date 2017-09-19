@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>IMFYM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+  <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+   <nav class="nav-extended">
+
+    <div class="nav-wrapper">
+      <a href="index.html" class="center"><h1 class="animated fadeInDown">IMFYM</h1></a>
+      <p class="animated fadeInUp center">"If McDonalds Fits Your Macros"</p>
+    </div>
+
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+          <li class="tab"><a href="#">About</a></li>
+          <li class="tab"><a href="#">App</a></li>
+          <li class="tab"><a class="active" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+  </nav>
+
+  <div class="contact">
+    <div class="container">
+
+
+      <div class="row">
+        <div class="col s2 offset-s5">
+          <img onclick="empty();nikInfo();" id="img1" class="firstCircle circle animated bounceInLeft" src="assets/images/nik.png" alt="">
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div style="float: left" class="col s2">
+          <img onclick="empty();chrisInfo();" id="img4" class="circle animated bounceInUp" src="assets/images/chris.jpg" alt="">
+        </div>
+
+        <div class="information col s4 offset-s2">
+
+        </div>
+
+        <div class="col s2 offset-s2">
+          <img onclick="empty();chadInfo();" id="img2" class="circle animated bounceInDown" src="assets/images/chad.jpg" alt="">
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col s2 offset-s5 last2">
+          <img onclick="empty();annaInfo();" id="img3" class="circle animated bounceInRight" src="assets/images/anna.jpg" alt="">
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container center">
+        <p class="animated fadeInUp">© 2017 Copyright IMFYM</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+
+    function nikInfo(){
+      $('.information').append("<h3 class='animated fadeIn'><a target='_blank' href='https://github.com/cnjdev'>Nikitas Marangos</a></h3>");
+    }
+    function chrisInfo(){
+      $('.information').append("<h3 class='animated fadeIn'><a target='_blank' href='https://github.com/cerrach'>Christopher Cerrachio</a></h3>");
+    }
+    function chadInfo(){
+      $('.information').append("<h3 class='animated fadeIn'><a target='_blank 'href='https://github.com/CLooker'>Chad Looker</a></h3>");
+    }
+    function annaInfo(){
+      $('.information').append("<h3 class='animated fadeIn'><a target='_blank' href='https://github.com/aleote'>Annalisa Leote</a></h3>");
+    }
+    function empty(){
+      $('.information').empty();
+    }
+
+  </script>
+	<script src="assets/js/logic.js"></script>
+
+</body>
+</html>
