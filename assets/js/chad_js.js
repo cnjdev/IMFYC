@@ -147,7 +147,7 @@ $( document ).ready(function() {
           if (length < 3) {
             length = 1;
           } else {
-            length = 3;
+            length = 6;
           }
         }
 
