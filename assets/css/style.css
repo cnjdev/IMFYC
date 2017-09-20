@@ -1,0 +1,94 @@
+
+*{
+  font-family: 'Dosis', sans-serif;
+}
+
+html{
+  background-image: url("../images/topography.png");
+}
+
+.nav-wrapper a h1{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.nav-wrapper p{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.nav-content li{
+  width: 33.333%;
+}
+
+
+
+
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.about{
+  margin-top: 25px;
+}
+
+.last{
+  margin-bottom: 150px;
+}
+
+.last2{
+  margin-bottom: 100px;
+}
+
+.about p{
+  padding: 5px;
+  border: 1px solid #ee6e73;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px #c3c3c3;
+}
+
+.contact{
+  overflow: hidden;
+}
+
+.firstCircle{
+  margin-top: 20px;
+}
+
+.circle{
+  width: 100%;
+}
+
+.circle:hover{
+  filter: drop-shadow(2px 2px 10px #111);
+}
+.circle:active{
+  filter: none;
+}
+
+.information{
+  text-align: center;
+}
+.information h3{
+  padding-top: 20px;
+}
+
+#img1{
+  -webkit-animation-delay: .25s; /* Safari 4.0 - 8.0 */
+  animation-delay: .25s;
+}
+
+#img2{
+  -webkit-animation-delay: .50s; /* Safari 4.0 - 8.0 */
+  animation-delay: .50s;
+}
+
+#img3{
+  -webkit-animation-delay: .75s; /* Safari 4.0 - 8.0 */
+  animation-delay: .75s;
+}
+
+#img4{
+  -webkit-animation-delay: 1s; /* Safari 4.0 - 8.0 */
+  animation-delay: 1s;
+}
