@@ -132,13 +132,15 @@ $( document ).ready(function() {
     }
   }
 
+  // check flag if attempted food search already
+  var foodSearchTryAgain = false;
   // function that actually makes a request to the API, and interacts with the response
   function getFood() {
 
     console.log("getFood called, randomMeal is: " + randomMeal);
     console.log("maxCalories is: " + maxCalories);
 
-    // the item_name we search for is the string randomly chosen from our pre-defined options
+    // the item_name we search for is the string randomvmly chosen from our pre-defined options
     // the maximum calories allowed is whatever maxCalories is
     $.ajax({
       url: "https://api.nutritionix.com/v1_1/search",
@@ -210,15 +212,24 @@ $( document ).ready(function() {
       // if API returns nothing for us to choose, choose a new search and choose an item from that
       if (response.hits.length === 0) {
 
-        // console.log("that item doesn't seem to exist right now, try again");
-        // chooseQuery();
-        // getFood();
-        // return;
+        console.log("that item doesn't seem to exist right now, try again");
+  
+        // check if food search was already attempted
+        if (! foodSearchTryAgain){
+          console.log("TRY FOOD SEARCH AGAIN");
+          foodSearchTryAgain = true;
+          chooseQuery();
+          getFood();
+        }
+  
+        return;
       } else {
         // if ajax does return someting, store what's randomly chosen
         mealItemName = response.hits[randomAjaxMealIndex].fields.item_name;
       }
 
+      // reset food search try again flag here
+      foodSearchTryAgain = false;
 
       // store the caloric and macro information
       var mealItemCalories = response.hits[randomAjaxMealIndex].fields.nf_calories,
