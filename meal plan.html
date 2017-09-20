@@ -12,7 +12,7 @@
 
   <style>
 
-@import "compass/css3";
+/*@import "compass/css3";*/
 
 .image {
   width: 250px;
@@ -158,7 +158,7 @@ p {
     <div class="card-tabs">
       <ul class="tabs tabs-fixed-width">
         <li class="tab"><a href="meal input.html">Meal Input</a></li>
-        <li class="tab"><a  class="active" href="meal plan.html">Options</a></li>
+        <li class="tab"><a class="options"  class="active" href="meal plan.html">Options</a></li>
         <li class="tab"><a href="map.html">Locate Me</a></li>
       </ul>
     </div>
@@ -178,19 +178,19 @@ p {
 
         <tbody>
           <tr>
-            <td>Food Item 1</td>
-            <td>Calorie 1</td>
-            <td><a href="#"><img src="http://via.placeholder.com/140x100"></a></td>
+            <td id="meal1Contents">Food Item 1</td>
+            <td id="meal1Calories">Calorie 1</td>
+            <td><a href="#"><img id="meal1Picture" src="http://via.placeholder.com/140x100"></a></td>
           </tr>
           <tr>
-            <td>Food Item 2</td>
-            <td>Calorie 2</td>
-            <td><a href="#"><img src="http://via.placeholder.com/140x100"></a></td>
+            <td id="meal2Contents">Food Item 2</td>
+            <td id="meal2Calories">Calorie 2</td>
+            <td><a href="#"><img id="meal2Picture" src="http://via.placeholder.com/140x100"></a></td>
           </tr>
           <tr>
-            <td>Food Item 3</td>
-            <td>Calorie 3</td>
-            <td><a href="#"><img src="http://via.placeholder.com/140x100"></a></td>
+            <td id="meal3Contents">Food Item 3</td>
+            <td id="meal3Calories">Calorie 3</td>
+            <td><a href="#"><img id="meal3Picture" src="http://via.placeholder.com/140x100"></a></td>
           </tr>
         </tbody>
       </table>
@@ -423,7 +423,7 @@ p {
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
-	<script src="assets/js/logic.js"></script>
+	<script src="assets/js/chad_js.js"></script>
 
 </body>
 </html>
