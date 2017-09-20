@@ -485,14 +485,14 @@ $( document ).ready(function() {
     } else {
       // if we have enough calories to add more items, but less than 330, we remove "burger" as an option, to minimize API errors
       // due to searching for burgers while not having enough calories for a burger
-        if (maxCalories <= 330) {
+        if (maxCalories < 330) {
           randomMealArray.splice("burger", 1);
           console.log("burger was removed due to insufficient calories");
           randomMealArray.splice("mcrib", 1);
           console.log("mcrib was removed due to insufficient calories");
           console.log("randomMealArray is now: " + randomMealArray);
         }
-        if (maxCalories <= 480) {          
+        if (maxCalories < 480) {          
           randomMealArray.splice("mcrib", 1);
           console.log("mcrib was removed due to insufficient calories");
           console.log("randomMealArray is now: " + randomMealArray);
