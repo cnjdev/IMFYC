@@ -1,5 +1,20 @@
 $( document ).ready(function() {
 
+  
+    if("#meal1Calories".length > 0){
+      $( document ).ready(function() {
+        console.log("HI")
+        $("#meal1Contents").html(localStorage.getItem("meal1Contents"));
+        $("#meal1Calories").text(localStorage.getItem("meal1Calories"));
+        $("#meal2Contents").html(localStorage.getItem("meal2Contents"));
+        $("#meal2Calories").text(localStorage.getItem("meal2Calories"));
+        $("#meal3Contents").html(localStorage.getItem("meal3Contents"));
+        $("#meal3Calories").text(localStorage.getItem("meal3Calories"));
+        });
+    }
+
+  
+
 
   $("#submitBtn").click(function() {
     // Nutrionix API information
@@ -19,7 +34,7 @@ $( document ).ready(function() {
     maxCalories = userInput,
 
     // these strings when randomly selected will be placed into our query in our ajax function
-    randomMealArray = ["burger", "chicken", "fish", "salad", "fries", "parfait", "frozen", "wrap", "fries", "mcrib", "big mac", "mcmuffin"],
+    randomMealArray = ["burger", "chicken", "fish", "salad", "fries", "parfait", "frozen", "wrap", "fries", "mcrib", "big mac", "mcmuffin", "apple pie"],
 
     // empty arrays we will populate with our meal items
     finishedMealArray1 = [],
@@ -56,7 +71,7 @@ $( document ).ready(function() {
 
   // reset values when we start to populate a new meal array
   function resetValues() {
-    randomMealArray = ["burger", "chicken", "fish", "salad", "fries", "parfait", "frozen", "wrap", "fries", "mcrib", "big mac", "mcmuffin"];
+    randomMealArray = ["burger", "chicken", "fish", "salad", "fries", "parfait", "frozen", "wrap", "fries", "mcrib", "big mac", "mcmuffin", "apple pie"];
     maxCalories = userInput;
     console.log("randomMealArray has been repopulated, and maxCalories reset");
     console.log("----------");
@@ -75,7 +90,7 @@ $( document ).ready(function() {
     }
     // use "ice cream" when calories are 250 or below
     else if (maxCalories <= 250) {
-      randomMeal = "frozen";
+      randomMeal = "soda";
     } else {
       var randomizedIndex = chooseRandomMealArrayIndex();
       console.log("randomizedIndex: " + randomizedIndex);
@@ -156,6 +171,10 @@ $( document ).ready(function() {
         }
 
         if (randomMeal == "ice cream") {
+          length = 1;
+        }
+
+        if (randomMeal == "apple pie"){
           length = 1;
         }
 
@@ -285,6 +304,37 @@ $( document ).ready(function() {
   // function that chooses our next item if we have enough calories
   function decideNextItem() {
 
+    function persist(){
+        var temp = "",
+        temp2 = "",
+        temp3 = "";
+        for(var i = 0; i<finishedMealArray1.length; i++){
+          console.log("Persist loop started");
+          console.log(finishedMealArray1[i].item_name);
+          temp = temp.concat(finishedMealArray1[i].item_name, "<br>")
+          
+        }
+        console.log("temp: " + temp)
+        localStorage.setItem("meal1Contents", temp);
+        localStorage.setItem("meal1Calories", finishedMeal1Calories);
+        
+        for(var i = 0; i<finishedMealArray2.length; i++){
+          
+          temp2 = temp2.concat(finishedMealArray2[i].item_name, "<br>")
+          
+        }
+        localStorage.setItem("meal2Contents", temp2);
+        localStorage.setItem("meal2Calories", finishedMeal2Calories);
+        
+        for(var i = 0; i<finishedMealArray3.length; i++){
+          
+          temp3 = temp3.concat(finishedMealArray3[i].item_name, "<br>")
+          
+        }
+        localStorage.setItem("meal3Contents", temp3);
+        localStorage.setItem("meal3Calories", finishedMeal3Calories);
+    }
+
 
     if (maxCalories <= 149) {
       console.log("not enough calories left");
@@ -315,6 +365,8 @@ $( document ).ready(function() {
         displayTotalNutrition(1);
         displayTotalNutrition(2);
         displayTotalNutrition(3);
+        persist();
+        
       }
       return;
     } else {
@@ -323,6 +375,11 @@ $( document ).ready(function() {
         if (maxCalories <= 330) {
           randomMealArray.splice("burger", 1);
           console.log("burger was removed due to insufficient calories");
+          randomMealArray.splice("mcrib", 1);
+          console.log("mcrib was removed due to insufficient calories");
+          console.log("randomMealArray is now: " + randomMealArray);
+        }
+        if (maxCalories <= 279) {          
           randomMealArray.splice("mcrib", 1);
           console.log("mcrib was removed due to insufficient calories");
           console.log("randomMealArray is now: " + randomMealArray);
@@ -348,7 +405,7 @@ $( document ).ready(function() {
   //      if (getImage.indexOf("burger") != -1){
   //        $("#whatever").attr("src", "..images/burger.jpg");    
   //      } else if (getImage.indexOf("mcchicken") != -1){
-  //          $("#whatever").attr("src", "..images/burger.jpg");
+  //          $("#whatever").attr("src", "..images/mcchicken.jpg");
   //      } else if (getImage.indexOf("fish") != -1){
   //          $("#whatever").attr("src", "..images/fish.jpg");
   //      } else if (getImage.indexOf("salad") != -1){
@@ -365,7 +422,9 @@ $( document ).ready(function() {
   //          $("#whatever").attr("src", "..images/bigMac.jpg");
   //      } else if (getImage.indexOf("mcmuffin") != -1){
   //          $("#whatever").attr("src", "..images/mcmuffin.jpg");        
-  //      } else {
+  //      } else if (getImage.indexOf("apple pie") != -1){
+  //          $("#whatever").attr("src", "..images/applePie.jpg");
+  //      else {
   //          $("#whatever").attr("src", "..images/arches.jpg");
 //        }
 //    else if (x === 2){
@@ -373,7 +432,7 @@ $( document ).ready(function() {
   //      if (getImage.indexOf("burger") != -1){
   //        $("#whatever").attr("src", "..images/burger.jpg");    
   //      } else if (getImage.indexOf("mcchicken") != -1){
-  //          $("#whatever").attr("src", "..images/burger.jpg");
+  //          $("#whatever").attr("src", "..images/mcchicken.jpg");
   //      } else if (getImage.indexOf("fish") != -1){
   //          $("#whatever").attr("src", "..images/fish.jpg");
   //      } else if (getImage.indexOf("salad") != -1){
@@ -390,7 +449,11 @@ $( document ).ready(function() {
   //          $("#whatever").attr("src", "..images/bigMac.jpg");
   //      } else if (getImage.indexOf("mcmuffin") != -1){
   //          $("#whatever").attr("src", "..images/mcmuffin.jpg");        
-  //      } else {
+  //      } else if (getImage.indexOf("apple pie") != -1){
+  //          $("#whatever").attr("src", "..images/applePie.jpg");
+  //      } else if (getImage.indexOf("apple pie") != -1){
+  //          $("#whatever").attr("src", "..images/applePie.jpg");
+  //      else {
   //          $("#whatever").attr("src", "..images/arches.jpg");
 //        }
   //  else if (x === 3){
@@ -398,7 +461,7 @@ $( document ).ready(function() {
   //      if (getImage.indexOf("burger") != -1){
   //        $("#whatever").attr("src", "..images/burger.jpg");    
   //      } else if (getImage.indexOf("mcchicken") != -1){
-  //          $("#whatever").attr("src", "..images/burger.jpg");
+  //          $("#whatever").attr("src", "..images/mcchicken.jpg");
   //      } else if (getImage.indexOf("fish") != -1){
   //          $("#whatever").attr("src", "..images/fish.jpg");
   //      } else if (getImage.indexOf("salad") != -1){
@@ -415,7 +478,9 @@ $( document ).ready(function() {
   //          $("#whatever").attr("src", "..images/bigMac.jpg");
   //      } else if (getImage.indexOf("mcmuffin") != -1){
   //          $("#whatever").attr("src", "..images/mcmuffin.jpg");        
-  //      } else {
+  //      } else if (getImage.indexOf("apple pie") != -1){
+  //          $("#whatever").attr("src", "..images/applePie.jpg");
+  //      else {
   //          $("#whatever").attr("src", "..images/arches.jpg");
 //        }
 //  }
