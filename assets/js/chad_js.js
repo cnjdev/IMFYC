@@ -1,15 +1,31 @@
 $( document ).ready(function() {
 
-  
+  function showFood(x){
+    if(x === 1){
+      $("#meal1Contents").html(localStorage.getItem("meal1Contents"));
+      $("#meal1Calories").text(localStorage.getItem("meal1Calories"));
+    }
+    if(x === 2){
+      $("#meal2Contents").html(localStorage.getItem("meal2Contents"));
+      $("#meal2Calories").text(localStorage.getItem("meal2Calories"));
+    }
+    if(x === 3){
+      $("#meal3Contents").html(localStorage.getItem("meal3Contents"));
+      $("#meal3Calories").text(localStorage.getItem("meal3Calories"));
+    }
+  }
+
     if("#meal1Calories".length > 0){
       $( document ).ready(function() {
-        console.log("HI")
-        $("#meal1Contents").html(localStorage.getItem("meal1Contents"));
-        $("#meal1Calories").text(localStorage.getItem("meal1Calories"));
-        $("#meal2Contents").html(localStorage.getItem("meal2Contents"));
-        $("#meal2Calories").text(localStorage.getItem("meal2Calories"));
-        $("#meal3Contents").html(localStorage.getItem("meal3Contents"));
-        $("#meal3Calories").text(localStorage.getItem("meal3Calories"));
+        showFood(1);
+        showFood(2);
+        showFood(3);
+        // $("#meal1Contents").html(localStorage.getItem("meal1Contents"));
+        // $("#meal1Calories").text(localStorage.getItem("meal1Calories"));
+        // $("#meal2Contents").html(localStorage.getItem("meal2Contents"));
+        // $("#meal2Calories").text(localStorage.getItem("meal2Calories"));
+        // $("#meal3Contents").html(localStorage.getItem("meal3Contents"));
+        // $("#meal3Calories").text(localStorage.getItem("meal3Calories"));
         });
     }
 
