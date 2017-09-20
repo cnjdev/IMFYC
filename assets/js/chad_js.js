@@ -1,5 +1,10 @@
 $( document ).ready(function() {
 
+  // empty arrays we will populate with our meal items
+    var finishedMealArray1 = [],
+    finishedMealArray2 = [],
+    finishedMealArray3 = [];
+
   function showFood(x){
     if(x === 1){
       $("#meal1Contents").html(localStorage.getItem("meal1Contents"));
@@ -15,17 +20,16 @@ $( document ).ready(function() {
     }
   }
 
+ 
+
     if("#meal1Calories".length > 0){
       $( document ).ready(function() {
         showFood(1);
         showFood(2);
         showFood(3);
-        // $("#meal1Contents").html(localStorage.getItem("meal1Contents"));
-        // $("#meal1Calories").text(localStorage.getItem("meal1Calories"));
-        // $("#meal2Contents").html(localStorage.getItem("meal2Contents"));
-        // $("#meal2Calories").text(localStorage.getItem("meal2Calories"));
-        // $("#meal3Contents").html(localStorage.getItem("meal3Contents"));
-        // $("#meal3Calories").text(localStorage.getItem("meal3Calories"));
+        $("#meal1Picture").attr("src", localStorage.getItem("meal1ImgSrc"));
+        $("#meal2Picture").attr("src", localStorage.getItem("meal2ImgSrc"));
+        $("#meal3Picture").attr("src", localStorage.getItem("meal3ImgSrc"));
         });
     }
 
@@ -52,10 +56,7 @@ $( document ).ready(function() {
     // these strings when randomly selected will be placed into our query in our ajax function
     randomMealArray = ["burger", "chicken", "fish", "salad", "fries", "parfait", "frozen", "wrap", "fries", "mcrib", "big mac", "mcmuffin", "apple pie"],
 
-    // empty arrays we will populate with our meal items
-    finishedMealArray1 = [],
-    finishedMealArray2 = [],
-    finishedMealArray3 = [],
+    
 
     // will be used to store what we selecct from randomMealArray
     randomMeal,
@@ -325,8 +326,7 @@ $( document ).ready(function() {
         temp2 = "",
         temp3 = "";
         for(var i = 0; i<finishedMealArray1.length; i++){
-          console.log("Persist loop started");
-          console.log(finishedMealArray1[i].item_name);
+          
           temp = temp.concat(finishedMealArray1[i].item_name, "<br>")
           
         }
@@ -350,6 +350,146 @@ $( document ).ready(function() {
         localStorage.setItem("meal3Contents", temp3);
         localStorage.setItem("meal3Calories", finishedMeal3Calories);
     }
+
+  function setImageFunc(x){
+    var getImage;
+   if (x === 1){
+       
+          getImage = finishedMealArray1[0].item_name.toLowerCase();
+          console.log("getImage: " + getImage);
+        console.log("get image index: " + getImage.indexOf("burger"));
+        console.log("get image index: " + getImage.indexOf("mcchicken"));
+        console.log("get image index: " + getImage.indexOf("fish"));
+        console.log("get image index: " + getImage.indexOf("salad"));
+        console.log("get image index: " + getImage.indexOf("fries"));
+        console.log("get image index: " + getImage.indexOf("parfait"));
+        console.log("get image index: " + getImage.indexOf("wrap"));
+        console.log("get image index: " + getImage.indexOf("mcrib"));
+        console.log("get image index: " + getImage.indexOf("big mac"));
+        console.log("get image index: " + getImage.indexOf("mcmuffin"));
+        console.log("get image index: " + getImage.indexOf("apple pie"));
+        
+
+       if (getImage.indexOf("burger") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/burger.jpg");
+         // $("#meal1Picture").attr("src", "..images/burger.jpg");    
+       } else if (getImage.indexOf("mcchicken") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/mcchicken.jpg");
+           // $("#meal1Picture").attr("src", "..images/mcchicken.jpg");
+       } else if (getImage.indexOf("fish") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/fish.jpg");
+           // $("#meal1Picture").attr("src", "..images/fish.jpg");
+       } else if (getImage.indexOf("salad") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/salad.jpg");
+           // $("#meal1Picture").attr("src", "..images/salad.jpg");
+       } else if (getImage.indexOf("fries") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/fries.jpg");
+           // $("#meal1Picture").attr("src", "..images/fries.jpg");
+       } else if (getImage.indexOf("parfait") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/parfait.jpg");
+           // $("#meal1Picture").attr("src", "..images/parfait.jpg");
+       } else if (getImage.indexOf("wrap") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/wrap.jpg");
+           // $("#meal1Picture").attr("src", "..images/wrap.jpg");
+       } else if (getImage.indexOf("mcrib") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/mcrib.jpg");
+           // $("#meal1Picture").attr("src", "..images/mcrib.jpg");
+       } else if (getImage.indexOf("big mac") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/bigMac.jpg");
+           // $("#meal1Picture").attr("src", "..images/bigMac.jpg");
+       } else if (getImage.indexOf("mcmuffin") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/mcmuffin.jpg");
+           // $("#meal1Picture").attr("src", "..images/mcmuffin.jpg");        
+       } else if (getImage.indexOf("apple pie") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/applePie.jpg");
+           // $("#meal1Picture").attr("src", "..images/applePie.jpg");
+       }else {
+          localStorage.setItem("meal1ImgSrc", "assets/images/arches.jpg");
+           // $("#meal1Picture").attr("src", "..images/arches.jpg");
+       }}
+   else if (x === 2){
+       
+          getImage = finishedMealArray2[0].item_name.toLowerCase();
+       
+       if (getImage.indexOf("burger") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/burger.jpg");
+         // $("#meal2Picture").attr("src", "..images/burger.jpg");    
+       } else if (getImage.indexOf("mcchicken") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/mcchicken.jpg");
+           // $("#meal2Picture").attr("src", "..images/mcchicken.jpg");
+       } else if (getImage.indexOf("fish") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/fish.jpg");
+           // $("#meal2Picture").attr("src", "..images/fish.jpg");
+       } else if (getImage.indexOf("salad") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/salad.jpg");
+           // $("#meal2Picture").attr("src", "..images/salad.jpg");
+       } else if (getImage.indexOf("fries") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/fries.jpg");
+           // $("#meal2Picture").attr("src", "..images/fries.jpg");
+       } else if (getImage.indexOf("parfait") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/parfait.jpg");
+           // $("#meal2Picture").attr("src", "..images/parfait.jpg");
+       } else if (getImage.indexOf("wrap") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/wrap.jpg");
+           // $("#meal2Picture").attr("src", "..images/wrap.jpg");
+       } else if (getImage.indexOf("mcrib") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/mcrib.jpg");
+           // $("#meal2Picture").attr("src", "..images/mcrib.jpg");
+       } else if (getImage.indexOf("big mac") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/bigMac.jpg");
+           // $("#meal2Picture").attr("src", "..images/bigMac.jpg");
+       } else if (getImage.indexOf("mcmuffin") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/mcmuffin.jpg");
+           // $("#meal2Picture").attr("src", "..images/mcmuffin.jpg");        
+       } else if (getImage.indexOf("apple pie") != -1){
+           localStorage.setItem("meal2ImgSrc", "assets/images/applePie.jpg");
+           // $("#meal2Picture").attr("src", "..images/applePie.jpg");
+       } else {
+          localStorage.setItem("meal2ImgSrc", "assets/images/arches.jpg");
+           // $("#meal2Picture").attr("src", "..images/arches.jpg");
+       }}
+   else if (x === 3){
+       
+          getImage = finishedMealArray3[0].item_name.toLowerCase();
+       
+       if (getImage.indexOf("burger") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/burger.jpg");
+         // $("#meal3Picture").attr("src", "..images/burger.jpg");    
+       } else if (getImage.indexOf("mcchicken") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/mcchicken.jpg");
+           // $("#meal3Picture").attr("src", "..images/mcchicken.jpg");
+       } else if (getImage.indexOf("fish") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/fish.jpg");
+           // $("#meal3Picture").attr("src", "..images/fish.jpg");
+       } else if (getImage.indexOf("salad") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/salad.jpg");
+           // $("#meal3Picture").attr("src", "..images/salad.jpg");
+       } else if (getImage.indexOf("fries") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/fries.jpg");
+           // $("#meal3Picture").attr("src", "..images/fries.jpg");
+       } else if (getImage.indexOf("parfait") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/parfait.jpg");
+           // $("#meal3Picture").attr("src", "..images/parfait.jpg");
+       } else if (getImage.indexOf("wrap") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/wrap.jpg");
+           // $("#meal3Picture").attr("src", "..images/wrap.jpg");
+       } else if (getImage.indexOf("mcrib") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/mcrib.jpg");
+           // $("#meal3Picture").attr("src", "..images/mcrib.jpg");
+       } else if (getImage.indexOf("big mac") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/bigMac.jpg");
+           // $("#meal3Picture").attr("src", "..images/bigMac.jpg");
+       } else if (getImage.indexOf("mcmuffin") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/mcmuffin.jpg");
+           // $("#meal3Picture").attr("src", "..images/mcmuffin.jpg");        
+       } else if (getImage.indexOf("apple pie") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/applePie.jpg");
+           // $("#meal3Picture").attr("src", "..images/applePie.jpg");
+       }else {
+          localStorage.setItem("meal3ImgSrc", "assets/images/arches.jpg");
+           // $("#meal3Picture").attr("src", "..images/arches.jpg");
+       }}
+ }
 
 
     if (maxCalories <= 149) {
@@ -382,6 +522,9 @@ $( document ).ready(function() {
         displayTotalNutrition(2);
         displayTotalNutrition(3);
         persist();
+        setImageFunc(1);
+        setImageFunc(2);
+        setImageFunc(3);
         
       }
       return;
@@ -415,88 +558,4 @@ $( document ).ready(function() {
 
 })
 
-//  function getImageFunc(x){
-//    if (x === 1){
-  //      var getImage = finishedMealArray[0].item_name;
-  //      if (getImage.indexOf("burger") != -1){
-  //        $("#whatever").attr("src", "..images/burger.jpg");    
-  //      } else if (getImage.indexOf("mcchicken") != -1){
-  //          $("#whatever").attr("src", "..images/mcchicken.jpg");
-  //      } else if (getImage.indexOf("fish") != -1){
-  //          $("#whatever").attr("src", "..images/fish.jpg");
-  //      } else if (getImage.indexOf("salad") != -1){
-  //          $("#whatever").attr("src", "..images/salad.jpg");
-  //      } else if (getImage.indexOf("fries") != -1){
-  //          $("#whatever").attr("src", "..images/fries.jpg");
-  //      } else if (getImage.indexOf("parfait") != -1){
-  //          $("#whatever").attr("src", "..images/parfait.jpg");
-  //      } else if (getImage.indexOf("wrap") != -1){
-  //          $("#whatever").attr("src", "..images/wrap.jpg");
-  //      } else if (getImage.indexOf("mcrib") != -1){
-  //          $("#whatever").attr("src", "..images/mcrib.jpg");
-  //      } else if (getImage.indexOf("big mac") != -1){
-  //          $("#whatever").attr("src", "..images/bigMac.jpg");
-  //      } else if (getImage.indexOf("mcmuffin") != -1){
-  //          $("#whatever").attr("src", "..images/mcmuffin.jpg");        
-  //      } else if (getImage.indexOf("apple pie") != -1){
-  //          $("#whatever").attr("src", "..images/applePie.jpg");
-  //      else {
-  //          $("#whatever").attr("src", "..images/arches.jpg");
-//        }
-//    else if (x === 2){
-  //      var getImage = finishedMealArray[0].item_name;
-  //      if (getImage.indexOf("burger") != -1){
-  //        $("#whatever").attr("src", "..images/burger.jpg");    
-  //      } else if (getImage.indexOf("mcchicken") != -1){
-  //          $("#whatever").attr("src", "..images/mcchicken.jpg");
-  //      } else if (getImage.indexOf("fish") != -1){
-  //          $("#whatever").attr("src", "..images/fish.jpg");
-  //      } else if (getImage.indexOf("salad") != -1){
-  //          $("#whatever").attr("src", "..images/salad.jpg");
-  //      } else if (getImage.indexOf("fries") != -1){
-  //          $("#whatever").attr("src", "..images/fries.jpg");
-  //      } else if (getImage.indexOf("parfait") != -1){
-  //          $("#whatever").attr("src", "..images/parfait.jpg");
-  //      } else if (getImage.indexOf("wrap") != -1){
-  //          $("#whatever").attr("src", "..images/wrap.jpg");
-  //      } else if (getImage.indexOf("mcrib") != -1){
-  //          $("#whatever").attr("src", "..images/mcrib.jpg");
-  //      } else if (getImage.indexOf("big mac") != -1){
-  //          $("#whatever").attr("src", "..images/bigMac.jpg");
-  //      } else if (getImage.indexOf("mcmuffin") != -1){
-  //          $("#whatever").attr("src", "..images/mcmuffin.jpg");        
-  //      } else if (getImage.indexOf("apple pie") != -1){
-  //          $("#whatever").attr("src", "..images/applePie.jpg");
-  //      } else if (getImage.indexOf("apple pie") != -1){
-  //          $("#whatever").attr("src", "..images/applePie.jpg");
-  //      else {
-  //          $("#whatever").attr("src", "..images/arches.jpg");
-//        }
-  //  else if (x === 3){
-  //      var getImage = finishedMealArray[0].item_name;
-  //      if (getImage.indexOf("burger") != -1){
-  //        $("#whatever").attr("src", "..images/burger.jpg");    
-  //      } else if (getImage.indexOf("mcchicken") != -1){
-  //          $("#whatever").attr("src", "..images/mcchicken.jpg");
-  //      } else if (getImage.indexOf("fish") != -1){
-  //          $("#whatever").attr("src", "..images/fish.jpg");
-  //      } else if (getImage.indexOf("salad") != -1){
-  //          $("#whatever").attr("src", "..images/salad.jpg");
-  //      } else if (getImage.indexOf("fries") != -1){
-  //          $("#whatever").attr("src", "..images/fries.jpg");
-  //      } else if (getImage.indexOf("parfait") != -1){
-  //          $("#whatever").attr("src", "..images/parfait.jpg");
-  //      } else if (getImage.indexOf("wrap") != -1){
-  //          $("#whatever").attr("src", "..images/wrap.jpg");
-  //      } else if (getImage.indexOf("mcrib") != -1){
-  //          $("#whatever").attr("src", "..images/mcrib.jpg");
-  //      } else if (getImage.indexOf("big mac") != -1){
-  //          $("#whatever").attr("src", "..images/bigMac.jpg");
-  //      } else if (getImage.indexOf("mcmuffin") != -1){
-  //          $("#whatever").attr("src", "..images/mcmuffin.jpg");        
-  //      } else if (getImage.indexOf("apple pie") != -1){
-  //          $("#whatever").attr("src", "..images/applePie.jpg");
-  //      else {
-  //          $("#whatever").attr("src", "..images/arches.jpg");
-//        }
-//  }
+
