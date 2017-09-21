@@ -257,7 +257,7 @@ $( document ).ready(function() {
         // console.log("that item doesn't seem to exist right now, try again");
         // chooseQuery();
         // getFood();
-        // return;
+        return;
       } else {
         // if ajax does return someting, store what's randomly chosen
         mealItemName = response.hits[randomAjaxMealIndex].fields.item_name;
@@ -559,7 +559,7 @@ $( document ).ready(function() {
         setImageFunc(1);
         setImageFunc(2);
         setImageFunc(3);
-        // window.location.replace("meal plan.html");
+        window.location.replace("meal plan.html");
 
 
       }
@@ -568,19 +568,28 @@ $( document ).ready(function() {
       // if we have enough calories to add more items, but less than 330, we remove "burger" as an option, to minimize API errors
       // due to searching for burgers while not having enough calories for a burger
         if (maxCalories < 330) {
-          randomMealArray.splice("burger", 1);
-          console.log("burger was removed due to insufficient calories");
-          console.log("randomMealArray is now: " + randomMealArray);
+          var burgerIndex = randomMealArray.indexOf("burger");
+          if (burgerIndex != -1){
+            randomMealArray.splice(burgerIndex, 1);
+            console.log("burger was removed due to insufficient calories");
+            console.log("randomMealArray is now: " + randomMealArray);
+          }
         }
         if (maxCalories < 480) {
-          randomMealArray.splice("mcrib", 1);
-          console.log("mcrib was removed due to insufficient calories");
-          console.log("randomMealArray is now: " + randomMealArray);
+          var mcribIndex = randomMealArray.indexOf("mcrib");
+          if (mcribIndex != -1){
+            randomMealArray.splice(mcribIndex, 1);
+            console.log("mcrib was removed due to insufficient calories");
+            console.log("randomMealArray is now: " + randomMealArray);
+          }
         }
         if (maxCalories < 570) {
-          randomMealArray.splice("big mac", 1);
-          console.log("big mac was removed due to insufficient calories");
-          console.log("randomMealArray is now: " + randomMealArray);
+          var bigMacIndex = randomMealArray.indexOf("big mac");
+          if (bigMacIndex != -1){
+            randomMealArray.splice(bigMacIndex, 1);
+            console.log("big mac was removed due to insufficient calories");
+            console.log("randomMealArray is now: " + randomMealArray);
+          }
         }
 
       // now that we have checked we have enough calories, choose another search and choose another item from what the search returns
