@@ -430,7 +430,7 @@ $( document ).ready(function() {
        } else if (getImage.indexOf("fries") != -1){
           localStorage.setItem("meal1ImgSrc", "assets/images/fries.jpg");
        } else if (getImage.indexOf("parfait") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/parfait.jpg");
+          localStorage.setItem("meal1ImgSrc", "assets/images/parfait.JPG");
        } else if (getImage.indexOf("wrap") != -1){
           localStorage.setItem("meal1ImgSrc", "assets/images/wrap.jpg");
        } else if (getImage.indexOf("mcrib") != -1){
@@ -467,7 +467,7 @@ $( document ).ready(function() {
        } else if (getImage.indexOf("fries") != -1){
           localStorage.setItem("meal2ImgSrc", "assets/images/fries.jpg");
        } else if (getImage.indexOf("parfait") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/parfait.jpg");
+          localStorage.setItem("meal2ImgSrc", "assets/images/parfait.JPG");
        } else if (getImage.indexOf("wrap") != -1){
           localStorage.setItem("meal2ImgSrc", "assets/images/wrap.jpg");
        } else if (getImage.indexOf("mcrib") != -1){
@@ -504,7 +504,7 @@ $( document ).ready(function() {
        } else if (getImage.indexOf("fries") != -1){
           localStorage.setItem("meal3ImgSrc", "assets/images/fries.jpg");
        } else if (getImage.indexOf("parfait") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/parfait.jpg");
+          localStorage.setItem("meal3ImgSrc", "assets/images/parfait.JPG");
        } else if (getImage.indexOf("wrap") != -1){
           localStorage.setItem("meal3ImgSrc", "assets/images/wrap.jpg");
        } else if (getImage.indexOf("mcrib") != -1){
