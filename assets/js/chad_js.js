@@ -42,8 +42,8 @@ $( document ).ready(function() {
   // button click handler
   $("#submitBtn").click(function() {
     // Nutrionix API information
-    var nxAppId = "74726c7b",
-    nxAppKey = "90742700ec90b139a3994f2f92d1ff0b",
+    var nxAppId = "be3ec202",
+    nxAppKey = "f4e9965e92e62942f7589e3925db1c7e",
 
     // Google API key
     gApiKey = "AIzaSyAjnWWbP30ssxxKP-jULse9lWmbR9AIaZ8",
