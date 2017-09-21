@@ -5,22 +5,53 @@ $( document ).ready(function() {
     finishedMealArray2 = [],
     finishedMealArray3 = [];
 
-  // displays meal items and calories for each finished meal
+  // displays meal items and nutrition for each finished meal
   function showFood(x){
 
-    if(x === 1){
+    if(x === 1){      
       $("#meal1Contents").html(localStorage.getItem("meal1Contents"));
-      $("#meal1Calories").text(localStorage.getItem("meal1Calories"));
+      var temp = $("#meal1Calories").html("Calories: ");
+      temp = temp.append(localStorage.getItem("meal1Calories"));
+      temp = temp.append("<br>");
+      temp = temp.append("Protein: ");
+      temp = temp.append(localStorage.getItem("meal1Protein"));
+      temp = temp.append("<br>");
+      temp = temp.append("Carbs: ");
+      temp = temp.append(localStorage.getItem("meal1Carbs"));
+      temp = temp.append("<br>");
+      temp = temp.append("Fat: ");
+      temp = temp.append(localStorage.getItem("meal1Fat"));
+
     }
 
     if(x === 2){
       $("#meal2Contents").html(localStorage.getItem("meal2Contents"));
-      $("#meal2Calories").text(localStorage.getItem("meal2Calories"));
+      var temp = $("#meal2Calories").html("Calories: ");
+      temp = temp.append(localStorage.getItem("meal2Calories"));
+      temp = temp.append("<br>");
+      temp = temp.append("Protein: ");
+      temp = temp.append(localStorage.getItem("meal2Protein"));
+      temp = temp.append("<br>");
+      temp = temp.append("Carbs: ");
+      temp = temp.append(localStorage.getItem("meal2Carbs"));
+      temp = temp.append("<br>");
+      temp = temp.append("Fat: ");
+      temp = temp.append(localStorage.getItem("meal2Fat"));
     }
 
     if(x === 3){
       $("#meal3Contents").html(localStorage.getItem("meal3Contents"));
-      $("#meal3Calories").text(localStorage.getItem("meal3Calories"));
+      var temp = $("#meal3Calories").html("Calories: ");
+      temp = temp.append(localStorage.getItem("meal3Calories"));
+      temp = temp.append("<br>");
+      temp = temp.append("Protein: ");
+      temp = temp.append(localStorage.getItem("meal3Protein"));
+      temp = temp.append("<br>");
+      temp = temp.append("Carbs: ");
+      temp = temp.append(localStorage.getItem("meal3Carbs"));
+      temp = temp.append("<br>");
+      temp = temp.append("Fat: ");
+      temp = temp.append(localStorage.getItem("meal3Fat"));
     }
   }
 
@@ -58,7 +89,7 @@ $( document ).ready(function() {
     maxCalories = userInput,
 
     // these strings when randomly selected will be placed into our query in our ajax function
-    randomMealArray = ["burger", "chicken", "fish", "salad", "fries", "parfait", "frozen", "wrap", "fries", "mcrib", "big mac", "mcmuffin", "apple pie"],
+    randomMealArray = ["burger", "chicken", "fish", "salad", "fries", "parfait", "frozen", "wrap", "fries", "mccafe", "mcrib", "big mac", "mcmuffin", "apple pie"],
 
 
 
@@ -92,7 +123,7 @@ $( document ).ready(function() {
 
   // reset values when we start to populate a new meal array
   function resetValues() {
-    randomMealArray = ["burger", "chicken", "fish", "salad", "fries", "parfait", "frozen", "wrap", "fries", "mcrib", "big mac", "mcmuffin", "apple pie"];
+    randomMealArray = ["burger", "chicken", "fish", "salad", "fries", "parfait", "frozen", "wrap", "fries", "mccafe", "mcrib", "big mac", "mcmuffin", "apple pie"];
     maxCalories = userInput;
     console.log("randomMealArray has been repopulated, and maxCalories reset");
     console.log("----------");
@@ -131,6 +162,11 @@ $( document ).ready(function() {
       }
     }
   }
+
+   // check flag if attempted food search already
+  var foodSearchTryAgain = false;
+
+       
 
   // function that actually makes a request to the API, and interacts with the response
   function getFood() {
@@ -210,14 +246,25 @@ $( document ).ready(function() {
       // if API returns nothing for us to choose, choose a new search and choose an item from that
       if (response.hits.length === 0) {
 
+        // check if food search was already attempted
+        if (! foodSearchTryAgain){
+          console.log("TRY FOOD SEARCH AGAIN");
+          foodSearchTryAgain = true;
+          chooseQuery();
+          getFood();
+        }
+
         // console.log("that item doesn't seem to exist right now, try again");
         // chooseQuery();
         // getFood();
-        // return;
+        return;
       } else {
         // if ajax does return someting, store what's randomly chosen
         mealItemName = response.hits[randomAjaxMealIndex].fields.item_name;
       }
+
+      // reset food search try again flag here
+      foodSearchTryAgain = false;
 
 
       // store the caloric and macro information
@@ -338,6 +385,9 @@ $( document ).ready(function() {
         console.log("temp: " + temp)
         localStorage.setItem("meal1Contents", temp);
         localStorage.setItem("meal1Calories", finishedMeal1Calories);
+        localStorage.setItem("meal1Protein", finishedMeal1Protein);
+        localStorage.setItem("meal1Carbs", finishedMeal1Carbs);
+        localStorage.setItem("meal1Fat", finishedMeal1Fat);
 
         for(var i = 0; i<finishedMealArray2.length; i++){
 
@@ -346,6 +396,9 @@ $( document ).ready(function() {
         }
         localStorage.setItem("meal2Contents", temp2);
         localStorage.setItem("meal2Calories", finishedMeal2Calories);
+        localStorage.setItem("meal2Protein", finishedMeal2Protein);
+        localStorage.setItem("meal2Carbs", finishedMeal2Carbs);
+        localStorage.setItem("meal2Fat", finishedMeal2Fat);
 
         for(var i = 0; i<finishedMealArray3.length; i++){
 
@@ -354,6 +407,9 @@ $( document ).ready(function() {
         }
         localStorage.setItem("meal3Contents", temp3);
         localStorage.setItem("meal3Calories", finishedMeal3Calories);
+        localStorage.setItem("meal3Protein", finishedMeal3Protein);
+        localStorage.setItem("meal3Carbs", finishedMeal3Carbs);
+        localStorage.setItem("meal3Fat", finishedMeal3Fat);
     }
 
   // depending on the first member of each meal array, set the img src tag in local storage
@@ -385,7 +441,15 @@ $( document ).ready(function() {
           localStorage.setItem("meal1ImgSrc", "assets/images/mcmuffin.jpg");
        } else if (getImage.indexOf("apple pie") != -1){
           localStorage.setItem("meal1ImgSrc", "assets/images/applePie.jpg");
-       }else {
+       } else if (getImage.indexOf("cola") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/cola.jpg");
+       } else if (getImage.indexOf("crab") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/crab.jpg");
+       } else if (getImage.indexOf("vernor") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/vernors.jpg");
+       }else if (getImage.indexOf("lemonade") != -1){
+          localStorage.setItem("meal1ImgSrc", "assets/images/lemonade.jpg");
+       }    else {
           localStorage.setItem("meal1ImgSrc", "assets/images/arches.jpg");
        }}
    else if (x === 2){
@@ -414,7 +478,15 @@ $( document ).ready(function() {
           localStorage.setItem("meal2ImgSrc", "assets/images/mcmuffin.jpg");
        } else if (getImage.indexOf("apple pie") != -1){
            localStorage.setItem("meal2ImgSrc", "assets/images/applePie.jpg");
-       } else {
+       } else if (getImage.indexOf("cola") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/cola.jpg");
+       } else if (getImage.indexOf("crab") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/crab.jpg");
+       } else if (getImage.indexOf("vernor") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/vernors.jpg");
+       } else if (getImage.indexOf("lemonade") != -1){
+          localStorage.setItem("meal2ImgSrc", "assets/images/lemonade.jpg");
+       }      else {
           localStorage.setItem("meal2ImgSrc", "assets/images/arches.jpg");
        }}
    else if (x === 3){
@@ -443,7 +515,15 @@ $( document ).ready(function() {
           localStorage.setItem("meal3ImgSrc", "assets/images/mcmuffin.jpg");
        } else if (getImage.indexOf("apple pie") != -1){
           localStorage.setItem("meal3ImgSrc", "assets/images/applePie.jpg");
-       }else {
+       } else if (getImage.indexOf("cola") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/cola.jpg");
+       } else if (getImage.indexOf("crab") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/crab.jpg");
+       } else if (getImage.indexOf("vernor") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/vernors.jpg");
+       } else if (getImage.indexOf("lemonade") != -1){
+          localStorage.setItem("meal3ImgSrc", "assets/images/lemonade.jpg");
+       }     else {
           localStorage.setItem("meal3ImgSrc", "assets/images/arches.jpg");
        }}
  }
@@ -479,6 +559,8 @@ $( document ).ready(function() {
         setImageFunc(1);
         setImageFunc(2);
         setImageFunc(3);
+        window.location.replace("meal plan.html");
+
 
       }
       return;
@@ -486,16 +568,28 @@ $( document ).ready(function() {
       // if we have enough calories to add more items, but less than 330, we remove "burger" as an option, to minimize API errors
       // due to searching for burgers while not having enough calories for a burger
         if (maxCalories < 330) {
-          randomMealArray.splice("burger", 1);
-          console.log("burger was removed due to insufficient calories");
-          randomMealArray.splice("mcrib", 1);
-          console.log("mcrib was removed due to insufficient calories");
-          console.log("randomMealArray is now: " + randomMealArray);
+          var burgerIndex = randomMealArray.indexOf("burger");
+          if (burgerIndex != -1){
+            randomMealArray.splice(burgerIndex, 1);
+            console.log("burger was removed due to insufficient calories");
+            console.log("randomMealArray is now: " + randomMealArray);
+          }
         }
         if (maxCalories < 480) {
-          randomMealArray.splice("mcrib", 1);
-          console.log("mcrib was removed due to insufficient calories");
-          console.log("randomMealArray is now: " + randomMealArray);
+          var mcribIndex = randomMealArray.indexOf("mcrib");
+          if (mcribIndex != -1){
+            randomMealArray.splice(mcribIndex, 1);
+            console.log("mcrib was removed due to insufficient calories");
+            console.log("randomMealArray is now: " + randomMealArray);
+          }
+        }
+        if (maxCalories < 570) {
+          var bigMacIndex = randomMealArray.indexOf("big mac");
+          if (bigMacIndex != -1){
+            randomMealArray.splice(bigMacIndex, 1);
+            console.log("big mac was removed due to insufficient calories");
+            console.log("randomMealArray is now: " + randomMealArray);
+          }
         }
 
       // now that we have checked we have enough calories, choose another search and choose another item from what the search returns
