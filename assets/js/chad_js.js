@@ -519,6 +519,8 @@ $( document ).ready(function() {
         setImageFunc(1);
         setImageFunc(2);
         setImageFunc(3);
+        window.location.replace("meal plan.html");
+
 
       }
       return;
