@@ -5,22 +5,53 @@ $( document ).ready(function() {
     finishedMealArray2 = [],
     finishedMealArray3 = [];
 
-  // displays meal items and calories for each finished meal
+  // displays meal items and nutrition for each finished meal
   function showFood(x){
 
-    if(x === 1){
+    if(x === 1){      
       $("#meal1Contents").html(localStorage.getItem("meal1Contents"));
-      $("#meal1Calories").text(localStorage.getItem("meal1Calories"));
+      var temp = $("#meal1Calories").html("Calories: ");
+      temp = temp.append(localStorage.getItem("meal1Calories"));
+      temp = temp.append("<br>");
+      temp = temp.append("Protein: ");
+      temp = temp.append(localStorage.getItem("meal1Protein"));
+      temp = temp.append("<br>");
+      temp = temp.append("Carbs: ");
+      temp = temp.append(localStorage.getItem("meal1Carbs"));
+      temp = temp.append("<br>");
+      temp = temp.append("Fat: ");
+      temp = temp.append(localStorage.getItem("meal1Fat"));
+
     }
 
     if(x === 2){
-      $("#meal2Contents").html(localStorage.getItem("meal2Contents"));
-      $("#meal2Calories").text(localStorage.getItem("meal2Calories"));
+      $("#meal2Contents").html(localStorage.getItem("meal1Contents"));
+      var temp = $("#meal2Calories").html("Calories: ");
+      temp = temp.append(localStorage.getItem("meal2Calories"));
+      temp = temp.append("<br>");
+      temp = temp.append("Protein: ");
+      temp = temp.append(localStorage.getItem("meal2Protein"));
+      temp = temp.append("<br>");
+      temp = temp.append("Carbs: ");
+      temp = temp.append(localStorage.getItem("meal2Carbs"));
+      temp = temp.append("<br>");
+      temp = temp.append("Fat: ");
+      temp = temp.append(localStorage.getItem("meal2Fat"));
     }
 
     if(x === 3){
       $("#meal3Contents").html(localStorage.getItem("meal3Contents"));
-      $("#meal3Calories").text(localStorage.getItem("meal3Calories"));
+      var temp = $("#meal3Calories").html("Calories: ");
+      temp = temp.append(localStorage.getItem("meal3Calories"));
+      temp = temp.append("<br>");
+      temp = temp.append("Protein: ");
+      temp = temp.append(localStorage.getItem("meal3Protein"));
+      temp = temp.append("<br>");
+      temp = temp.append("Carbs: ");
+      temp = temp.append(localStorage.getItem("meal3Carbs"));
+      temp = temp.append("<br>");
+      temp = temp.append("Fat: ");
+      temp = temp.append(localStorage.getItem("meal3Fat"));
     }
   }
 
@@ -338,6 +369,9 @@ $( document ).ready(function() {
         console.log("temp: " + temp)
         localStorage.setItem("meal1Contents", temp);
         localStorage.setItem("meal1Calories", finishedMeal1Calories);
+        localStorage.setItem("meal1Protein", finishedMeal1Protein);
+        localStorage.setItem("meal1Carbs", finishedMeal1Carbs);
+        localStorage.setItem("meal1Fat", finishedMeal1Fat);
 
         for(var i = 0; i<finishedMealArray2.length; i++){
 
@@ -346,6 +380,9 @@ $( document ).ready(function() {
         }
         localStorage.setItem("meal2Contents", temp2);
         localStorage.setItem("meal2Calories", finishedMeal2Calories);
+        localStorage.setItem("meal2Protein", finishedMeal2Protein);
+        localStorage.setItem("meal2Carbs", finishedMeal2Carbs);
+        localStorage.setItem("meal2Fat", finishedMeal2Fat);
 
         for(var i = 0; i<finishedMealArray3.length; i++){
 
@@ -354,6 +391,9 @@ $( document ).ready(function() {
         }
         localStorage.setItem("meal3Contents", temp3);
         localStorage.setItem("meal3Calories", finishedMeal3Calories);
+        localStorage.setItem("meal3Protein", finishedMeal3Protein);
+        localStorage.setItem("meal3Carbs", finishedMeal3Carbs);
+        localStorage.setItem("meal3Fat", finishedMeal3Fat);
     }
 
   // depending on the first member of each meal array, set the img src tag in local storage
