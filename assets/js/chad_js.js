@@ -72,6 +72,9 @@ $( document ).ready(function() {
 
   // button click handler
   $("#submitBtn").click(function() {
+    finishedMealArray1 = [],
+    finishedMealArray2 = [],
+    finishedMealArray3 = [];
     // Nutrionix API information
     var nxAppId = "da62e249",
     nxAppKey = "7276dd89558157da5bd0ca1053e932cb",
@@ -559,7 +562,7 @@ $( document ).ready(function() {
         setImageFunc(1);
         setImageFunc(2);
         setImageFunc(3);
-        window.location.replace("meal plan.html");
+        // window.location.replace("meal plan.html");
 
 
       }
