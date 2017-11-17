@@ -231,7 +231,10 @@ function getLocationDetails(){
       infoWindow.open(map);
 
       // var inputLocation = document.getElementById('loc-input');
-      map.controls[google.maps.ControlPosition.TOP_LEFT].pop();
+      var mapControls = map.controls[google.maps.ControlPosition.TOP_LEFT];
+      if (mapControls.length > 0){
+        mapControls.pop();
+      }
     }
   });
 }
